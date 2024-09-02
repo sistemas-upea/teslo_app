@@ -9,9 +9,25 @@ class AuthDataSourceImpl extends AuthDatasource {
     baseUrl: Environment.apiUrl,
   ));
   @override
-  Future<User> chechAuthStatus(String token) {
-    // TODO: implement chechAuthStatus
-    throw UnimplementedError();
+  Future<User> chechAuthStatus(String token) async {
+    try {
+      final response = await dio.get(
+        '/auth/check-status',
+        options: Options(headers: {
+          'Authorization': 'Bearer $token',
+        }),
+      );
+
+      final user = UserMapper.userJsonEntity(response.data);
+      return user;
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 401) {
+        throw CustomError('Token invalido');
+      }
+      throw Exception();
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override
