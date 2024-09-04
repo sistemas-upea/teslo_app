@@ -18,7 +18,7 @@ class AuthDataSourceImpl extends AuthDatasource {
         }),
       );
 
-      final user = UserMapper.userJsonEntity(response.data);
+      final user = UserMapper.userJsonToEntity(response.data);
       return user;
     } on DioException catch (e) {
       if (e.response?.statusCode == 401) {
@@ -37,7 +37,7 @@ class AuthDataSourceImpl extends AuthDatasource {
         'email': email,
         'password': password,
       });
-      final user = UserMapper.userJsonEntity(response.data);
+      final user = UserMapper.userJsonToEntity(response.data);
       return user;
     } on DioException catch (e) {
       if (e.response?.statusCode == 401) {
