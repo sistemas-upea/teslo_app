@@ -101,7 +101,6 @@ class _LoginForm extends ConsumerWidget {
                 buttonColor: Colors.black,
                 onPressed: () {
                   ref.read(loginFormProvider.notifier).onFormSubmit();
-                  print(ref.read(loginFormProvider.notifier).onFormSubmit());
                 },
               )),
           const Spacer(flex: 2),

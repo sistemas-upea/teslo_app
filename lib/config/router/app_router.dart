@@ -36,6 +36,7 @@ final goRouterProvider = Provider((ref) {
     redirect: (context, state) {
       final isGoingTo = state.uri.toString();
       final authStatus = goRouterNotifier.authStatus;
+
       if (isGoingTo == '/splash' && authStatus == AuthStatus.checking) {
         return null;
       }
@@ -45,7 +46,9 @@ final goRouterProvider = Provider((ref) {
         return '/login';
       }
       if (authStatus == AuthStatus.authenticated) {
-        if (isGoingTo == '/login' || isGoingTo == '/register') return '/';
+        if (isGoingTo == '/login' ||
+            isGoingTo == '/register' ||
+            isGoingTo == '/splash') return '/';
       }
       return null;
     },
