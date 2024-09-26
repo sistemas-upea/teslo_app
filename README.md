@@ -19,3 +19,5 @@ Recuerden leer y seguir la guía para montar el backend localmente.
 flutter clean
 flutter build apk
 flutter pub get
+
+Dennis Oliver Saravia Quino
