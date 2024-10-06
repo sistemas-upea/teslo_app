@@ -20,4 +20,6 @@ flutter clean
 flutter build apk
 flutter pub get
 
+## Nota
+> Debe renombrar el archivo ``.env.template``` a ``.env``
 
